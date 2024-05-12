@@ -1,0 +1,59 @@
+body {
+  background-color: #f4f4f4; // A light grey background for the whole page
+  font-family: 'Arial', sans-serif; // Use a standard readable font
+
+  h2, p {
+    color: #333; // Dark grey text for better readability
+  }
+}
+
+h2 {
+  font-weight: bold;
+  color: #0056b3; // Blue color for headers
+}
+
+button {
+  font-family: 'Arial', sans-serif;
+}
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden; // Ensures no content spills out
+
+  &.plumber { background-color: #e3f2fd; } // Light blue for plumbers
+  &.painter { background-color: #ffebee; } // Light red for painters
+  &.electrician { background-color: #e8f5e9; } // Light green for electricians
+  &.cleaner { background-color: #fffde7; } // Light yellow for cleaners
+  &.assembler { background-color: #f3e5f5; } // Light purple for assemblers
+
+  .card-body {
+    padding: 15px;
+
+    .card-title {
+      font-size: 1.5rem;
+      color: #007bff;
+    }
+
+    .card-text {
+      margin-top: 10px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

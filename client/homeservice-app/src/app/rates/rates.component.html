@@ -1,0 +1,17 @@
+
+<mat-dialog-content>
+<form [formGroup]="ratesForm" (ngSubmit)="onSubmit()">
+  <label >SET THE RATES </label><br/>
+  <label for="service1">Plumbing Rate:</label>
+  <input type="number" id="service1" formControlName="service1"><br>
+
+  <label for="service2">Cleaning Rate:</label>
+  <input type="number" id="service2" formControlName="service2"><br>
+
+
+  <button type="submit">Save</button>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

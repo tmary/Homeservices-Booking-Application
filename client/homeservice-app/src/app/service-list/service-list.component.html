@@ -1,0 +1,23 @@
+<br/>
+<br/>
+<br/>
+
+
+<div class="container">
+
+<form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="serviceName" placeholder="Service Name">
+  <textarea formControlName="serviceDescription" placeholder="Service Description"></textarea>
+
+  <button type="submit" [disabled]="serviceForm.invalid">Add Service</button>
+</form>
+
+<div *ngFor="let service of services; let i = index">
+  <p>{{ service.serviceName }}</p>
+  <p>{{ service.serviceDescription }}</p>
+
+  <button (click)="editService(i)">Edit</button>
+  <button (click)="deleteService(i)">Delete</button>
+  <button mat-button (click)="openPopupDialog()">Set Rate</button>
+</div><br/>
+</div>

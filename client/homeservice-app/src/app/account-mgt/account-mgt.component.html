@@ -1,0 +1,33 @@
+<br/>
+<br/>
+<div class="container">
+  <h2>Account Management</h2>
+  <mat-card>
+    <mat-card-title>Create Admin User</mat-card-title>
+    <mat-card-content>
+
+      <form [formGroup]="adminCreationForm">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+          <mat-error *ngIf="adminCreationForm.get('emial')?.hasError('email')">
+            Invalid email format
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-error *ngIf="adminCreationForm.get('password')?.hasError('required')">
+            Password is Required
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="createAdminUser()">Create Admin User</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+  <button type="button" mat-raised-button color="primary" (click)="openAddPromotion()">Add New Promotion</button>
+  <button type="button" mat-raised-button color="primary" (click)="openBookingMgt()">Manage Bookings  </button>
+     <button mat-raised-button color="primary" (click)="openAddService()">Add Service</button>
+</div>

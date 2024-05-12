@@ -1,0 +1,18 @@
+<div class="container">
+<div class="login-container">
+  <form  class="loginForm" [formGroup]="loginForm"  (ngSubmit)="login()">
+    <h3 class="txt-color-mg">Sign in</h3>
+    <input name="email" formControlName="email" type="email" id="inputEmail" placeholder="Email address" required />
+    <input type="password" name="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password" required />
+    <div class="buttons">
+      <button type="submit" [disabled]="isLoading">Login</button>
+  </div>
+  <div class="buttons">
+    <button type="button" (click)="navigate('/signup')">Sign Up</button>
+</div>
+    <div class="overlay" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+    </div>
+  </form>
+</div>
+</div>

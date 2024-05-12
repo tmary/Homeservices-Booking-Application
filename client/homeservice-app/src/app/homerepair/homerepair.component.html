@@ -1,0 +1,17 @@
+
+<ng-container *ngIf="authService.isAuthenticated() && authService.isAdmin()">
+</ng-container>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let service of services">
+      <div class="card mb-4">
+        <img class="card-img-top" [src]="service.imageUrl" [alt]="service.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ service.name }}</h5>
+          <p class="card-text">{{ service.description }}</p>
+          <button mat-button class="btn btn-primary" (click)="openBookingDialog()">Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

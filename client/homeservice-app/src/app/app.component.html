@@ -1,0 +1,9 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <nav>
+    <button *ngIf="showLogoutButton" (click)="onLogout"> Logout</button>
+  </nav>
+<router-outlet />
+
+<app-footer></app-footer>
+</div>

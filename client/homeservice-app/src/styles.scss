@@ -1,0 +1,77 @@
+@import 'ngx-toastr/toastr';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0 auto;
+  background-color:  #fff;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  margin: 0 auto; /* Center the container horizontally */
+  max-width: 1200px; /* Define the maximum width of the container */
+  padding: 0 20px; /* Add padding to the container */
+}
+
+.form-err-msg {
+    color: red;
+    text-align: center;
+}
+
+
+.sidebar-opener {
+    cursor: pointer;
+  }
+
+  .sidebar-slider {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    transition: ease-in-out 300ms transform;
+    width: 25rem;
+    background-color: #e0e0e0;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .sidebar-slider.sidebar-slide-in {
+    transform: translateX(0%);
+    transition: ease-in-out 600ms transform;
+  }
+
+  .sidebar-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: black;
+    cursor: pointer;
+    padding: 16px;
+  }
+
+  .sidebar-content {
+    display: flex;
+    // align-items: center;
+    // justify-content: space-around;
+    flex-direction: column;
+    color: black;
+    // font-size: 16px;
+    padding: 0.2rem;
+    background-color: white;
+    height: 70%;
+  }
+
+
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+ }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

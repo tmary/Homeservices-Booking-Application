@@ -1,0 +1,39 @@
+<div class="container">
+<div class="login-container">
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="login-form">
+      <h3 class="txt-color-mg">Sign Up</h3>
+      <input formControlName="email"  name="email"  type="email" id="inputEmail" placeholder="Email"  class="form-control" [ngClass]="{'invalid-input':registrationForm.get('email')?.errors}" required />
+      <div *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)">
+        <p *ngIf="registrationForm.get('email')?.errors && registrationForm.get('email')?.errors!['required']">Email is required.</p>
+        <p *ngIf="registrationForm.get('email')?.errors && registrationForm.get('email')?.errors!['email']">Please enter a valid email.</p>
+    </div>
+
+    <input type="text" id="firstName" name="fistName" formControlName="firstName" class="form-control" placeholder="First Name" required>
+    <div *ngIf="registrationForm.controls['firstName']?.invalid && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)" class="txt-error">
+      <p>First Name is required.</p>
+    </div>
+    <input type="text" id="lastName" name="lastName" formControlName="lastName" class="form-control" placeholder="Last Name"  required>
+    <div *ngIf="registrationForm.controls['lastName']?.invalid && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)" class="txt-error">
+      <p>Last Name is required.</p>
+    </div>
+       <input formControlName="address" name="address" type="text" id="address" placeholder="Address"/>
+       <input formControlName="password" name="password" type="password" id="password" class="form-control" placeholder="Password" required [ngClass]="{'inavlid-input':registrationForm.get('password')?.errors}" minlength="8" />
+      <div *ngIf="registrationForm.get('password')?.invalid && (registrationForm.get('password')?.dirty || registrationForm.get('password')?.touched)">
+        <p *ngIf="registrationForm.get('password')?.errors && registrationForm.get('password')?.errors!['required']">Password is required.</p>
+        <p *ngIf="registrationForm.get('password')?.errors && registrationForm.get('password')?.errors!['minlength']">Password must be at least 8 characters.</p>
+      </div>
+      <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" [ngClass]="{'invalid-input':registrationForm.get('confirmPassword')?.errors}" required />
+      <div *ngIf="registrationForm.get('confirmPassword')?.invalid && (registrationForm.get('confirmPassword')?.dirty || registrationForm.get('confirmPassword')?.touched)">
+        <p *ngIf="registrationForm.get('confirmPassword')?.errors && registrationForm.get('confirmPassword')?.errors!['required']">Confirming password is required.</p>
+        <p *ngIf="registrationForm.get('confirmPassword')?.errors!['notaMatch']">Password not a match.</p>
+      </div>
+      <div class="buttons">
+        <button type="submit">Sign Up</button>
+    </div>
+    <div class="buttons">
+        <button type="reset" (click)="openLoginPage()">Login</button>
+    </div>
+  </form>
+</div>
+</div>

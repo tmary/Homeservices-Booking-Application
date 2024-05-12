@@ -1,0 +1,11 @@
+<div class="container">
+  <br/>
+<h2>Leave Feedback !</h2>
+  <select [(ngModel)]="selectedServiceId">
+    <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
+  </select>
+  <textarea [(ngModel)]="newFeedback.message" placeholder="Enter your feedback here"></textarea>
+  <input type="number" [(ngModel)]="newFeedback.rating" min="1" max="5" placeholder="Rating (1-5)">
+  <button (click)="submitFeedback()">Submit Feedback</button>
+</div>
+

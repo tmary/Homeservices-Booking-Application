@@ -1,0 +1,19 @@
+<br/>
+<div class="container">
+<form class="booking-form" (ngSubmit)="submitBooking()">
+  <label for="service">Select Service:</label>
+  <select id="service" [(ngModel)]="selectedService" name="service">
+    <option *ngFor="let service of services" [value]="service.id">{{ service.name }}</option>
+  </select>
+
+  <label for="date">Select Date:</label>
+  <input type="date" id="date" [(ngModel)]="selectedDate" name="date">
+
+  <label for="time">Select Time:</label>
+  <input type="time" id="time" [(ngModel)]="selectedTime" name="time">
+<div class="booking-form button">
+  <button type="submit">Book Service</button>
+</div>
+</form>
+</div>
+

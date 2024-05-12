@@ -1,0 +1,19 @@
+<br/>
+<br/>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let serviceArea of serviceAreas">
+      <div class="card" [ngClass]="serviceArea.name.toLowerCase().replace(' ', '')">
+      <div class="card-body">
+          <h5 class="card-title">{{serviceArea.name}}</h5>
+          <p class="card-text"><span class="bold-text">Areas of service:</span> {{serviceArea.areasOfService.join(', ')}}</p>
+          <p class="card-text"><span class="bold-text">Rating:</span> {{serviceArea.rating}}</p>
+          <button *ngIf="isAdmin" class="btn btn-primary " (click)="editServiceArea(serviceArea)">Edit</button>
+          <button *ngIf="isAdmin" class="btn btn-danger" (click)="deleteServiceArea(serviceArea.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

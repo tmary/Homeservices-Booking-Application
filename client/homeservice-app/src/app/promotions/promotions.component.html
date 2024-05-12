@@ -1,0 +1,50 @@
+<br/>
+<div class="container">
+<p>Promotions</p>
+<div  class="table-container" *ngIf="promotions && promotions.length; else noPromotionTemplate">
+  <table mat-table [dataSource]="promotions">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="discount">
+      <th mat-header-cell *matHeaderCellDef>Discount</th>
+      <td mat-cell *matCellDef="let element">{{ element.discount }}%</td>
+    </ng-container>
+
+    <ng-container matColumnDef="validityPeriod">
+      <th mat-header-cell *matHeaderCellDef>Validity</th>
+      <td mat-cell *matCellDef="let element">{{element.validityPeriod }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+
+  </table>
+
+</div>
+<ng-template #noPromotionTemplate>
+  <p>NO PROMOTIONS AVAILABLE.</p>
+</ng-template>
+
+<button (click)="openAddPromotionModal()">Add New Promotion</button>
+
+<div class="modal" [class.active]="isModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeAddPromotionModal()">&times;</span>
+      <form (ngSubmit)="onSubmit()" #promotionForm="ngForm">
+        <input type="text" [(ngModel)]="title" name="title" placeholder="Title" required>
+        <input type="text" [(ngModel)]="description" name="description" placeholder="Description" required>
+        <input type="number" [(ngModel)]="discount" name="discount" placeholder="Discount" required>
+        <input type="text" [(ngModel)]="validityPeriod" name="validityPeriod" placeholder="Validity Period" required>
+        <button type="submit">Add Promotion</button>
+      </form>
+  </div>
+</div>
+</div>

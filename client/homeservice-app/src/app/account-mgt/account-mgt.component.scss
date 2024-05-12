@@ -1,0 +1,54 @@
+/* General page layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Form Card Styling */
+mat-card {
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+mat-card-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Button Styles */
+button[mat-raised-button] {
+  margin-top: 20px;
+  margin-right: 10px;
+  min-width: 150px;
+}
+
+button[mat-raised-button]:first-of-type {
+  margin-left: 0;
+}
+
+/* Add some spacing between buttons */
+.container button {
+  margin-top: 10px;
+}
