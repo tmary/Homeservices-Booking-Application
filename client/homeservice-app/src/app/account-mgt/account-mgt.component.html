@@ -10,7 +10,7 @@
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email">
-          <mat-error *ngIf="adminCreationForm.get('emial')?.hasError('email')">
+          <mat-error *ngIf="adminCreationForm.get('email')?.hasError('email')">
             Invalid email format
           </mat-error>
         </mat-form-field>
@@ -21,7 +21,7 @@
             Password is Required
           </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="createAdminUser()">Create Admin User</button>
+        <button mat-raised-button color="primary" (click)="createAdminUser()" [disabled]="!adminCreationForm.valid">Create Admin User</button>
       </form>
     </mat-card-content>
   </mat-card>

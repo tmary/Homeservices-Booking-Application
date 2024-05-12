@@ -11,7 +11,7 @@ import {map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private appUrl = 'http://locahost:3000/app';
+  private appUrl = 'http://locahost:3000/app/login';
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   private currentUserRole: UserRole| null = null;
 

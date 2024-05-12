@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//import { MainClass } from '/.main-class';
 const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes/routes");
 const body_parser_1 = __importDefault(require("body-parser"));
@@ -20,10 +19,6 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 const port = 3000;
 const dbUrl = 'mongodb://localhost:4000/homeservice-db';
-app.use(body_parser_1.default.urlencoded({ extended: true }));
-app.use('/app', serviceProviderRoutes_1.default);
-app.use('/app/feedbacks', feedbackRoutes_1.default);
-app.use('/app', bookingRoutes_1.default);
 //mongodb connection
 mongoose_1.default.connect(dbUrl).then((_) => {
     console.log('Successfully connected to MongoDB.');
@@ -34,18 +29,21 @@ mongoose_1.default.connect(dbUrl).then((_) => {
 // Configure express-session middleware
 const whiteList = ['*', 'http://localhost:4200'];
 const corsOption = {
-    origin: (origin, callback) => {
+    origin: function (origin, callback) {
         if (whiteList.indexOf(origin) !== -1 || whiteList.includes('*')) {
             callback(null, true);
         }
         else {
-            callback(new Error('Not allowed by CORS'));
+            callback(new Error('Not allowed by CORS'), false);
         }
     },
     credentials: true
 };
 app.use((0, cors_1.default)(corsOption));
-//bodyParser
+app.use(body_parser_1.default.urlencoded({ extended: true }));
+app.use('/app', serviceProviderRoutes_1.default);
+app.use('/app/feedbacks', feedbackRoutes_1.default);
+app.use('/app', bookingRoutes_1.default);
 //cookies
 app.use((0, cookie_parser_1.default)());
 const sessionOptions = {

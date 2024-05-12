@@ -34,9 +34,12 @@ export class AccountMgtComponent  implements OnInit {
       const { email, password} = this.adminCreationForm.value;
       this.accountService.createAdminUser(email, password).subscribe(response => {
         console.log('Admin user created successfully:', response);
+        this.router.navigate(['/dashboard']);
+
       },
     error => {
       console.error('Error creating Admin user:', error);
+      alert('Failed to create admin user: ' + error.message);
     });
 
   } else {
@@ -56,6 +59,4 @@ export class AccountMgtComponent  implements OnInit {
   openAddService(): void {
     this.router.navigate(['/service-list']);
   }
-
-
 }

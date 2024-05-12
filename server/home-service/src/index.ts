@@ -1,4 +1,4 @@
-//import { MainClass } from '/.main-class';
+
 import express from 'express';
 import { configureRoutes } from './routes/routes';
 import bodyParser from 'body-parser';
@@ -6,7 +6,7 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import { configurePassport } from './passport/passport';
-import cors from 'cors';
+import cors , {CorsOptions} from 'cors';
 import  serviceProvidersRoutes from './routes/serviceProviderRoutes'; 
 import expressSession from 'express-session';
 import bookingRoutes from './routes/bookingRoutes'
@@ -16,12 +16,6 @@ const app = express();
 app.use(cors());
 const port = 3000;
 const dbUrl = 'mongodb://localhost:4000/homeservice-db';
-
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.use('/app', serviceProvidersRoutes);
-app.use('/app/feedbacks', feedbackRoutes);
-app.use('/app', bookingRoutes);
 
 //mongodb connection
 mongoose.connect(dbUrl).then((_) => {
@@ -33,24 +27,23 @@ mongoose.connect(dbUrl).then((_) => {
 
 // Configure express-session middleware
 
-const whiteList = ['*', 'http://localhost:4200'];
+const whiteList = ['*','http://localhost:4200'];
 const corsOption = {
-    origin:(origin: string | undefined, callback: (err: Error | null, allowed?: boolean) => void) => {
+    origin:function(origin: string | undefined, callback:  (err: Error | null, allowed?: boolean) => void){
         if (whiteList.indexOf(origin!) !== -1 || whiteList.includes('*')) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(new Error('Not allowed by CORS'), false);
         }
     },
     credentials: true
 };
 
 app.use(cors(corsOption));
-
-
-
-
-//bodyParser
+app.use(bodyParser.urlencoded({extended: true}));
+app.use('/app', serviceProvidersRoutes);
+app.use('/app/feedbacks', feedbackRoutes);
+app.use('/app', bookingRoutes);
 
 //cookies
 app.use(cookieParser());

@@ -4,12 +4,12 @@ import { UserController } from '../controllers/userController';
 import { Booking, IBooking } from '../model/booking';
 
 interface CustomRequest extends Request {
-    decoded?: { userId: string }; // Modify this according to your actual decoded token structure
+    decoded?: { userId: string }; 
 }
 
 const router = express.Router();
 
-let bookings: any[] = []; // Assuming you have a data structure to store bookings
+let bookings: any[] = []; 
 
 // Create a new booking
 router.post('/bookings',  async (req: CustomRequest, res: Response) => {

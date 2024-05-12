@@ -16,7 +16,7 @@ const express_1 = __importDefault(require("express"));
 const authMiddleware_1 = require("../controllers/authMiddleware");
 const booking_1 = require("../model/booking");
 const router = express_1.default.Router();
-let bookings = []; // Assuming you have a data structure to store bookings
+let bookings = [];
 // Create a new booking
 router.post('/bookings', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
